@@ -1,25 +1,25 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import './App.css';
 
-class Counter{
-  constructor() {
-    this.count = 0;
+class Counter extends Component{
+ state = {
+  count: 0
+ }
+
+  increment = () => {
+    this.setState(state => ({ count: state.count + 1 }));
   }
 
-  increment() {
-    this.count += 1;
-  }
-
-  decrement() {
-    this.count -= 1;
+  decrement= () => {
+    this.setState(state => ({ count: state.count - 1 }));
   }
   render() {
     return (
       <div>
         <h1>Counter App</h1>
-        <p>Count: {this.count}</p>
-        <button onClick={this.increment.bind(this)}>Increment</button>
-        <button onClick={this.decrement.bind(this)}>Decrement</button>
+        <p>Count: {this.state.count}</p>
+        <button onClick={this.increment}>Increment</button>
+        <button onClick={this.decrement}>Decrement</button>
       </div>
     );
   }
